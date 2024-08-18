@@ -1,18 +1,18 @@
 // Clock JS
 function updateClock() {
+
    var now = new Date();
-   var year = now.getFullYear()
    var hours = now.getHours();
    var minutes = now.getMinutes();
    var seconds = now.getSeconds();
    var amPm = hours >= 12 ? 'PM' : 'AM';
-   hours = hours % 13;
+   hours = hours % 12;
    hours = hours ? hours : 12;
    minutes = minutes < 10 ? '0' + minutes : minutes;
    seconds = seconds < 10 ? '0' + seconds : seconds;
-   let days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+   let days = ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December",]
-   let day = `${days[now.getDay() - 1]}, ${months[now.getMonth()]} ${now.getDate()} ${now.getFullYear()} `
+   let day = `${days[now.getDay()]}, ${months[now.getMonth()]} ${now.getDate()} ${now.getFullYear()}`
    var time = `${hours}:${minutes}:${seconds} ${amPm}`
 
    document.getElementById('clockTime').innerHTML = time;
