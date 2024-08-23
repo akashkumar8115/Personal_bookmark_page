@@ -26,7 +26,10 @@ i {
 .table {
    color: rgb(255 255 255 / 78%) !important;
 }
-
+.table>:not(caption)>*>* {
+    max-width: 230px;
+    overflow: hidden;
+}
 a {
    color: rgb(128 163 255) !important;
 }
