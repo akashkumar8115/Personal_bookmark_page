@@ -3,7 +3,7 @@
 // Retrieve fav list from local storage
 let favList = JSON.parse(localStorage.getItem("favList")) || [];
 /**
-[{title, url},]
+ [{title, url},]
  */
 const favourite_item_list = document.getElementById("favourite-item-list");
 
@@ -19,7 +19,6 @@ function renderFavList() {
          <td><h4><i id="delete-favourite" class="bi bi-trash" data-index="${i}" style="color:rgb(255 52 52);"></i></h4></td>
       </tr>
       `
-       favourite_item_list.innerHTML = htmlContent;
    }
 }
 
@@ -69,4 +68,3 @@ favourite_item_list.addEventListener('click', (e) => {
 })
 
 renderFavList()
-
