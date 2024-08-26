@@ -1,7 +1,7 @@
 // Favourite Site List
 
 // Clear corrupted data (optional, if needed)
-localStorage.removeItem("favList");
+// localStorage.removeItem("favList");
 
 // Retrieve fav list from local storage with error handling
 let favList = [];
