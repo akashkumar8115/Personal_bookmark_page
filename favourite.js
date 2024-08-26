@@ -14,7 +14,7 @@ function renderFavList() {
       <tr>
          <th scope="row">${i + 1}</th>
          <td> ${favList[i].title} </td>
-         <td> <a href="http://${favList[i].url}" target="_blank">${favList[i].url} </a></td>
+         <td> <a href="${favList[i].url}" target="_blank">${favList[i].url} </a></td>
          <td><h4><i id="edit-favourite" class="bi bi-pencil-square" data-index="${i}" style="color:rgb(78 255 125);"></i></h4></td>
          <td><h4><i id="delete-favourite" class="bi bi-trash" data-index="${i}" style="color:rgb(255 52 52);"></i></h4></td>
       </tr>
