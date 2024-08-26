@@ -1,7 +1,18 @@
 // Favourite Site List
 
-// Retrieve fav list from local storage
-let favList = JSON.parse(localStorage.getItem("favList")) || [];
+// Clear corrupted data (optional, if needed)
+localStorage.removeItem("favList");
+
+// Retrieve fav list from local storage with error handling
+let favList = [];
+try {
+   favList = JSON.parse(localStorage.getItem("favList")) || [];
+} catch (e) {
+   console.error("Error parsing JSON from localStorage:", e);
+   // Clear corrupted data
+   localStorage.removeItem("favList");
+}
+
 /**
  [{title, url},]
  */
@@ -23,18 +34,18 @@ function renderFavList() {
 }
 
 function addFav(item) {
-   console.log('item to be added: ', item);
+   console.log('Item to be added:', item);
    favList.push(item);
-   localStorage.setItem("favList", JSON.stringify(favList));
-   renderFavList(); // Corrected from renderList to renderFavList
+   localStorage.setItem("favList", JSON.stringify(favList)); // Ensure it's stored as JSON
+   renderFavList();
 }
 
 // Handle form submission
 const favTitle = document.getElementById("fav-title");
 const favUrl = document.getElementById("fav-url");
 document.getElementById("add-favourite").addEventListener("click", function () {
-   let fav_title_value = favTitle.value.trim(); // Added trim to remove unnecessary spaces
-   let fav_url_value = favUrl.value.trim(); // Added trim to remove unnecessary spaces
+   let fav_title_value = favTitle.value.trim(); // Remove unnecessary spaces
+   let fav_url_value = favUrl.value.trim(); // Remove unnecessary spaces
    document.getElementById("fav-close-modal").click();
 
    addFav({ title: fav_title_value, url: fav_url_value });
@@ -53,7 +64,7 @@ favourite_item_list.addEventListener('click', (e) => {
       let newUrl = prompt("Enter New URL", favList[index].url);
       favList[index].title = newTitle ? newTitle.trim() : favList[index].title;
       favList[index].url = newUrl ? newUrl.trim() : favList[index].url;
-      localStorage.setItem('favList', JSON.stringify(favList)); // JSON.stringify was missing
+      localStorage.setItem('favList', JSON.stringify(favList)); // Store updated list as JSON
       renderFavList();
    }
    else if (target.classList.contains('delete-favourite')) { // Changed id check to class check
@@ -61,10 +72,11 @@ favourite_item_list.addEventListener('click', (e) => {
       let yes_no = confirm(`Do you want to delete the favourite ${favList[index].title}?`);
       if (yes_no) {
          favList.splice(index, 1);
-         localStorage.setItem('favList', JSON.stringify(favList));
+         localStorage.setItem('favList', JSON.stringify(favList)); // Store updated list as JSON
          renderFavList();
       }
    }
 });
 
+// Initial render of the favorite list
 renderFavList();
