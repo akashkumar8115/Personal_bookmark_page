@@ -19,6 +19,7 @@ function renderFavList() {
          <td><h4><i id="delete-favourite" class="bi bi-trash" data-index="${i}" style="color:rgb(255 52 52);"></i></h4></td>
       </tr>
       `
+       favourite_item_list.innerHTML = htmlContent;
    }
 }
 
