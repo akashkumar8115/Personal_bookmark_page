@@ -119,7 +119,7 @@
                </div>
             </div>
 
-            <!-- Todo part begins here -->
+     <!-- Todo part begins here -->
             <div class="col-sm-6">
                <div class="container">
                   <div class="mt-5 container d-flex" style="color: whitesmoke;">
@@ -128,16 +128,18 @@
                         <i class="bi bi-clipboard2-plus mx-3" style="color: rgb(127 173 255);" data-bs-toggle="modal"
                            data-bs-target="#addTodoModal"></i>
                      </h1>
-
                   </div>
 
                   <table class="table">
                      <thead>
                         <tr>
                            <th scope="col">#</th>
-                           <th scope="col" style="max-width: 10em;">Todo</th><!--  -->
+                           <th scope="col" style="max-width: 10em;">Todo</th>
+                           <th scope="col" style="max-width: 5em;">URL</th>
                            <th scope="col">Edit</th>
                            <th scope="col">Delete</th>
+                           <th scope="col">Done</th>
+                           <th scope="col">Date</th>
                         </tr>
                      </thead>
                      <tbody id="todo-item-list">
@@ -146,7 +148,7 @@
                </div>
 
                <!-- Add Todo Item Modal -->
-               <div class=" modal fade" id="addTodoModal" tabindex="-1" aria-labelledby="addModalLabel"
+               <div class="modal fade" id="addTodoModal" tabindex="-1" aria-labelledby="addModalLabel"
                   aria-hidden="true">
                   <div class="modal-dialog">
                      <div class="modal-content">
@@ -156,7 +158,8 @@
                               aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                           <input id="new-todo-modal" type="text" class="form-control" placeholder="New Todo Item">
+                           <input id="new-todo-modal" type="text" class="form-control" placeholder="New Todo Item"> <br>
+                           <input id="new-todo-modal-url" type="text" class="form-control" placeholder="New URL">
                         </div>
                         <div class="modal-footer">
                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -165,8 +168,8 @@
                      </div>
                   </div>
                </div>
-
             </div>
+
          </div>
       </main>
 
