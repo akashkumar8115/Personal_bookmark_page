@@ -1,138 +1,181 @@
+/* Theme Variables */
+:root {
+   --bg-body: linear-gradient(135deg, #f4f7fa, #e9ecef);
+   --bg-primary: #ffffff;
+   --text-primary: #2f3338;
+   --card-bg: rgba(255, 255, 255, 0.9);
+   --card-border: rgba(0, 0, 0, 0.1);
+   --table-header-bg: #343a40;
+   --table-header-text: #ffffff;
+   --footer-bg: #212529;
+   --footer-text: #e9ecef;
+   --link-color: #007bff;
+   --link-hover: #0056b3;
+   --header-bg: linear-gradient(135deg, #007bff, #0056b3);
+   --header-text: #ffffff;
+   --transition: all 0.3s ease;
+}
+
+[data-theme="dark"] {
+   --bg-body: linear-gradient(135deg, #1a1a1a, #2c2c2c);
+   --bg-primary: #2c2c2c;
+   --text-primary: #e9ecef;
+   --card-bg: rgba(255, 255, 255, 0.05);
+   --card-border: rgba(255, 255, 255, 0.1);
+   --table-header-bg: #1c2526;
+   --table-header-text: #e9ecef;
+   --footer-bg: #0f1419;
+   --footer-text: #adb5bd;
+   --link-color: #4dabf7;
+   --link-hover: #339af0;
+   --header-bg: linear-gradient(135deg, #1c2526, #343a40);
+   --header-text: #e9ecef;
+}
+
+/* General Styling */
 body {
-   background-size: cover;
-   background-position: center;
-   background-color: black !important;
+   font-family: 'Inter', sans-serif;
+   background: var(--bg-body);
+   color: var(--text-primary);
+   transition: var(--transition);
 }
 
-i {
-   cursor: pointer;
+.container_div {
+   min-height: 100vh;
+   padding-bottom: 80px;
 }
 
-.top-right {
-   margin-top: 2em;
-   padding: 3px;
-   color: whitesmoke;
-   /* text-align: right; */
+/* Header */
+header {
+   background: var(--header-bg);
+   color: var(--header-text);
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.clockCard,
-.weather__card {
-   background-color: rgba(238, 238, 238, 0.251);
-   backdrop-filter: blur(2px);
-   border-radius: 20px;
-   color: whitesmoke;
+/* Card Styling */
+.clockCard, .weather__card, .section-card {
+   background: var(--card-bg);
+   backdrop-filter: blur(8px);
+   border: 1px solid var(--card-border);
+   border-radius: 10px;
+   transition: var(--transition), transform 0.3s ease, box-shadow 0.3s ease;
+}
+.clockCard:hover, .weather__card:hover, .section-card:hover {
+   transform: translateY(-5px) scale(1.02);
+   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
+/* Table Styling */
 .table {
-   color: rgb(255 255 255 / 78%) !important;
+   background-color: var(--bg-primary);
+   border-radius: 8px;
+   overflow: hidden;
 }
-.table>:not(caption)>*>* {
-    max-width: 230px;
-    overflow: hidden;
+.table th {
+   background-color: var(--table-header-bg);
+   color: var(--table-header-text);
 }
-a {
-   color: rgb(128 163 255) !important;
+.table td {
+   vertical-align: middle;
+   color: var(--text-primary);
 }
-
-.clockCard h3 {
-   color: rgb(60, 64, 72);
+.table a {
+   color: var(--link-color);
+   text-decoration: none;
 }
-
-.weather__card h3 {
-   /* line-height: .2; */
-   color: rgb(60, 64, 72);
+.table a:hover {
+   color: var(--link-hover);
+   text-decoration: underline;
 }
-
-.clockCard h5 {
-
-   color: rgb(60, 64, 72);
+.fade-in {
+   /* animation: fadeIn 0.5s ease-in; */
 }
-
-.weather__card .weather__description {
-   background-color: rgb(255, 255, 255);
-   border-radius: 20px;
-   padding: .3em .6em;
-   /*y,x*/
-   border: 0;
-   outline: none;
-   color: rgb(127, 132, 135);
-   font-size: .9rem;
-   /* font-weight: 400; */
+@keyframes fadeIn {
+   from { opacity: 0; transform: translateY(10px); }
+   to { opacity: 1; transform: translateY(0); }
 }
 
-
-
-@media (max-width: 768px) {
-   .weather{
-      /* border: 2px solid red; */
-      padding-top: 1rem;
-   }
+/* Modal Styling */
+.modal-content {
+   background-color: var(--bg-primary);
+   border-radius: 12px;
+   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+   /* animation: slideIn 0.3s ease; */
+}
+.modal-header {
+   background: var(--header-bg);
+   color: var(--header-text);
+   border-top-left-radius: 12px;
+   border-top-right-radius: 12px;
+}
+.form-control {
+   background-color: var(--bg-primary);
+   color: var(--text-primary);
+   border-color: var(--card-border);
+}
+.form-control:focus {
+   border-color: var(--link-color);
+   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+.form-control:invalid:focus {
+   border-color: #dc3545;
+   box-shadow: 0 0 5px rgba(220, 53, 69, 0.5);
+}
+@keyframes slideIn {
+   from { opacity: 0; transform: translateY(-20px); }
+   to { opacity: 1; transform: translateY(0); }
 }
 
-/* footer */
+/* Button Styling */
+.btn-primary {
+   background-color: var(--link-color);
+   border: none;
+   transition: var(--transition), transform 0.2s ease;
+}
+.btn-primary:hover {
+   background-color: var(--link-hover);
+   transform: scale(1.05);
+}
+.btn-outline-secondary {
+   border-color: var(--card-border);
+   color: var(--text-primary);
+   transition: var(--transition), transform 0.2s ease;
+}
+.btn-outline-secondary:hover {
+   background-color: var(--link-color);
+   color: var(--header-text);
+   transform: scale(1.05);
+}
 
+/* Input Group */
+.input-group-text {
+   background-color: var(--link-color);
+   color: var(--header-text);
+}
+.input-group .form-control {
+   border-radius: 0 5px 5px 0;
+}
+
+/* Footer */
 footer {
-   background-color: #333;
-   color: whitesmoke;
-   padding: 30px 0;
-   font-size: 14px;
+   background: var(--footer-bg);
+   color: var(--footer-text);
 }
-
-.footer-container {
-   max-width: 1200px;
-   margin: 0 auto;
-   padding: 0 20px;
-}
-
-.footer-section {
-   margin-bottom: 20px;
-}
-
-.footer-section h5 {
-   font-size: 18px;
-   margin-bottom: 15px;
-}
-
-.footer-section p {
-   margin: 0 0 10px;
-   font-size: 14px;
-}
-
-.social-icons {
-   display: flex;
-   gap: 10px;
-}
-
 .social-icons a {
-   color: whitesmoke;
-   font-size: 18px;
-   transition: color 0.3s ease;
+   color: var(--footer-text);
+   font-size: 1.5rem;
+   transition: var(--transition), transform 0.2s ease;
 }
-
 .social-icons a:hover {
-   color: #007bff;
+   color: var(--link-color);
+   transform: scale(1.2);
 }
 
-.copyright {
-   margin-top: 20px;
+/* Theme Toggle Button */
+#theme-toggle {
+   transition: var(--transition);
 }
-
-@media (max-width: 768px) {
-   .footer-section {
-      text-align: center;
-   }
-
-   .social-icons {
-      justify-content: center;
-   }
-}
-
-@media (max-width: 576px) {
-   .footer-section {
-      margin-bottom: 30px;
-   }
-
-   .footer-section h5 {
-      font-size: 16px;
-   }
+#theme-toggle:hover {
+   background-color: var(--link-hover);
+   color: var(--header-text);
 }

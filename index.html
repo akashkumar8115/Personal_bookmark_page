@@ -4,8 +4,8 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="shortcut icon" href="favicon.png" type="image/x-icon">
-   <title>Personal bookmark Page</title>
+   <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+   <title>Personal Bookmark Page</title>
 
    <link rel="stylesheet" href="index.css">
 
@@ -13,41 +13,47 @@
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+   <!-- Google Fonts for modern typography -->
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body data-theme="light">
+   <header class="py-3">
+      <div class="container d-flex justify-content-between align-items-center">
+         <h2 class="fw-bold">Personal Bookmark Page</h2>
+         <button id="theme-toggle" class="btn btn-outline-secondary">
+            <i class="bi bi-moon-stars-fill"></i> Dark Mode
+         </button>
+      </div>
+   </header>
+
    <div class="container_div">
-      <main class="container">
-         <div class="row my-3 justify-content-center">
-            <!-- clock card-->
+      <main class="container py-4">
+         <div class="row my-4 justify-content-center">
+            <!-- Clock Card -->
             <div class="col-md-6 d-flex justify-content-center">
                <div class="text-center align-items-center">
-                  <div class="clockCard p-3">
-                     <h3 id="clockTime" style="color: whitesmoke;"></h3>
-                     <h5 id="clockDay" style="color: whitesmoke;"></h5>
+                  <div class="clockCard p-4 shadow-lg rounded-3">
+                     <h3 id="clockTime" class="fw-semibold"></h3>
+                     <h5 id="clockDay"></h5>
                   </div>
                </div>
             </div>
 
-            <!-- weather card -->
+            <!-- Weather Card -->
             <div class="col-md-6 d-flex justify-content-center weather">
-               <!-- <img src="https://wttr.in/varanasi_tpq0_transparency=150.png"> -->
-
-               <div class="weather__card p-3">
+               <div class="weather__card p-4 shadow-lg rounded-3">
                   <div class="d-flex">
-
                      <div class="p-1 d-flex align-items-center">
-                        <h3 id="temperature" style="color: whitesmoke;"></h3>
+                        <h3 id="temperature" class="fw-semibold"></h3>
                         <i class="bi bi-thermometer-sun mx-2" style="color: rgb(255, 200, 116);"></i>
                      </div>
-
                      <div class="p-1 d-flex align-items-center">
                         <span class="weather__description mx-2" id="description"></span>
                         <span id="location"></span>
                         <i id="edit-location" class="mx-1 bi bi-pencil"></i>
                      </div>
                   </div>
-
                   <div class="weather__status d-flex flex-row justify-content-center align-items-center my-2">
                      <div class="px-3 d-flex justify-content-center align-items-center">
                         <i class="bi bi-droplet-half" style="color: rgb(94 187 255)"></i>
@@ -57,7 +63,7 @@
                         <i class="bi bi-thermometer-half" style="color: rgb(255 214 160);"></i>
                         <span id="pressure"></span>
                      </div>
-                     <div class=" px-3 d-flex justify-content-center align-items-center">
+                     <div class="px-3 d-flex justify-content-center align-items-center">
                         <i class="bi bi-wind"></i>
                         <span id="windSpeed"></span>
                      </div>
@@ -71,16 +77,22 @@
          <div class="row">
             <!-- Favourite Sites Section -->
             <div class="col-sm-6">
-               <div class="container">
-                  <div class="mt-5 container d-flex" style="color: whitesmoke;">
-                     <h1 class="m-3">
+               <div class="container shadow-lg p-4 rounded-3 section-card">
+                  <div class="mt-4 container d-flex align-items-center">
+                     <h1 class="m-3 fw-bold">
                         Favourite Sites
-                        <i class="bi bi-bookmark-plus mx-3" style="color: rgb(127 173 255);" data-bs-toggle="modal"
-                           data-bs-target="#addFavouriteModal"></i>
+                        <i class="bi bi-bookmark-plus mx-3" style="color: rgb(127 173 255); cursor: pointer;"
+                           data-bs-toggle="modal" data-bs-target="#addFavouriteModal"></i>
                      </h1>
                   </div>
 
-                  <table class="table">
+                  <div class="input-group mb-3">
+                     <span class="input-group-text"><i class="bi bi-search"></i></span>
+                     <input type="text" id="search-favourite" class="form-control" placeholder="Search favorites...">
+                     <button id="clear-fav-search" class="btn btn-outline-secondary">Clear</button>
+                  </div>
+
+                  <table class="table table-striped table-hover rounded">
                      <thead>
                         <tr>
                            <th scope="col">#</th>
@@ -90,9 +102,7 @@
                            <th scope="col">Delete</th>
                         </tr>
                      </thead>
-                     <tbody id="favourite-item-list">
-                        <!-- Favourite table here -->
-                     </tbody>
+                     <tbody id="favourite-item-list"></tbody>
                   </table>
                </div>
 
@@ -107,8 +117,8 @@
                               aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                           <input id="fav-title" type="text" class="form-control" placeholder="Site Title">
-                           <input id="fav-url" type="url" class="form-control my-2" placeholder="URL">
+                           <input id="fav-title" type="text" class="form-control" placeholder="Site Title" required>
+                           <input id="fav-url" type="url" class="form-control my-2" placeholder="URL" required>
                         </div>
                         <div class="modal-footer">
                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -119,20 +129,26 @@
                </div>
             </div>
 
-     <!-- Todo part begins here -->
+            <!-- Todo Section -->
             <div class="col-sm-6">
-               <div class="container">
-                  <div class="mt-5 container d-flex" style="color: whitesmoke;">
-                     <h1 class="m-3">
+               <div class="container shadow-lg p-4 rounded-3 section-card">
+                  <div class="mt-4 container d-flex align-items-center">
+                     <h1 class="m-3 fw-bold">
                         Todo List
-                        <i class="bi bi-clipboard2-plus mx-3" style="color: rgb(127 173 255);" data-bs-toggle="modal"
-                           data-bs-target="#addTodoModal"></i>
+                        <i class="bi bi-clipboard2-plus mx-3" style="color: rgb(127 173 255); cursor: pointer;"
+                           data-bs-toggle="modal" data-bs-target="#addTodoModal"></i>
                      </h1>
                   </div>
 
-                  <table class="table">
+                  <div class="input-group mb-3">
+                     <span class="input-group-text"><i class="bi bi-search"></i></span>
+                     <input type="text" id="search-todo" class="form-control" placeholder="Search todos...">
+                     <button id="clear-todo-search" class="btn btn-outline-secondary">Clear</button>
+                  </div>
+
+                  <table class="table table-striped table-hover rounded">
                      <thead>
-                        <tr>
+                        <tr class="text-black text-start">
                            <th scope="col">#</th>
                            <th scope="col" style="max-width: 10em;">Todo</th>
                            <th scope="col" style="max-width: 5em;">URL</th>
@@ -142,8 +158,7 @@
                            <th scope="col">Date</th>
                         </tr>
                      </thead>
-                     <tbody id="todo-item-list">
-                     </tbody>
+                     <tbody id="todo-item-list"></tbody>
                   </table>
                </div>
 
@@ -158,8 +173,10 @@
                               aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                           <input id="new-todo-modal" type="text" class="form-control" placeholder="New Todo Item"> <br>
-                           <input id="new-todo-modal-url" type="text" class="form-control" placeholder="New URL">
+                           <input id="new-todo-modal" type="text" class="form-control" placeholder="New Todo Item"
+                              required>
+                           <input id="new-todo-modal-url" type="url" class="form-control my-2" placeholder="New URL"
+                              required>
                         </div>
                         <div class="modal-footer">
                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -169,44 +186,67 @@
                   </div>
                </div>
             </div>
-
          </div>
       </main>
-
    </div>
-<!-- footer start -->
-    <footer>
-      <div class="footer-container">
+
+   <!-- Footer -->
+   <footer class="py-4 bg-dark text-light">
+      <div class="footer-container container">
          <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-12 footer-section">
-               <h5>About Us</h5>
-               <p>We provide a variety of bookmarks and tools to manage your favorite sites and todo lists in one place.
+            <!-- About -->
+            <div class="col-lg-4 col-md-6 col-sm-12 footer-section mb-3">
+               <h5>About Me</h5>
+               <p>
+                  Hi 👋 I'm Akash Kumar.
+                  This project is a personal bookmark & todo manager — designed to keep your favorite sites and daily
+                  tasks in one place.
                </p>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 footer-section">
+
+            <!-- Contact -->
+            <div class="col-lg-4 col-md-6 col-sm-12 footer-section mb-3">
                <h5>Contact</h5>
-               <p>Email: contact@bookmarkpage.com</p>
-               <p>Phone: +1 234 567 890</p>
+               <p>
+                  <i class="bi bi-envelope me-2"></i>
+                  <a href="mailto:yourname@example.com" class="text-light text-decoration-none">
+                     yourname@example.com
+                  </a>
+               </p>
+               <p>
+                  <i class="bi bi-telephone me-2"></i> +91-98765-43210
+               </p>
+               <p>
+                  <i class="bi bi-geo-alt me-2"></i> New Delhi, India
+               </p>
             </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 footer-section">
-               <h5>Follow Us</h5>
+
+            <!-- Social -->
+            <div class="col-lg-4 col-md-12 col-sm-12 footer-section mb-3">
+               <h5>Follow Me</h5>
                <div class="social-icons">
-                  <a href="#"><i class="bi bi-facebook"></i></a>
-                  <a href="#"><i class="bi bi-twitter"></i></a>
-                  <a href="#"><i class="bi bi-instagram"></i></a>
-                  <a href="#"><i class="bi bi-linkedin"></i></a>
+                  <a href="https://facebook.com/yourprofile" target="_blank" class="me-3 text-light"><i
+                        class="bi bi-facebook"></i></a>
+                  <a href="https://twitter.com/yourprofile" target="_blank" class="me-3 text-light"><i
+                        class="bi bi-twitter"></i></a>
+                  <a href="https://instagram.com/yourprofile" target="_blank" class="me-3 text-light"><i
+                        class="bi bi-instagram"></i></a>
+                  <a href="https://linkedin.com/in/yourprofile" target="_blank" class="text-light"><i
+                        class="bi bi-linkedin"></i></a>
                </div>
             </div>
          </div>
-         <div class="row">
+
+         <!-- Copyright -->
+         <div class="row mt-3">
             <div class="col-12 text-center copyright">
-               <p>&copy; 2024 Bookmark Page. All rights reserved.</p>
+               <p class="mb-0">&copy; 2025 Akash Kumar. All rights reserved.</p>
             </div>
          </div>
       </div>
    </footer>
-<!--    footer end -->
-   
+
+
    <script src="index.js"></script>
    <script src="todo.js"></script>
    <script src="favourite.js"></script>
@@ -222,10 +262,9 @@
       integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
       crossorigin="anonymous"></script>
 
-<!--    these bot -->
+   <!-- Botpress -->
    <script src="https://cdn.botpress.cloud/webchat/v2.1/inject.js"></script>
-<script src="https://mediafiles.botpress.cloud/be04a26c-bad7-47bb-8537-984ec856f3b6/webchat/v2.1/config.js"></script>
-   
+   <script src="https://mediafiles.botpress.cloud/be04a26c-bad7-47bb-8537-984ec856f3b6/webchat/v2.1/config.js"></script>
 </body>
 
 </html>

@@ -1,25 +1,73 @@
-// Clock JS
+// Theme Toggle Functionality
+const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
+const savedTheme = localStorage.getItem('theme') || 'light';
+body.setAttribute('data-theme', savedTheme);
+updateThemeIcon(savedTheme);
+
+themeToggle.addEventListener('click', () => {
+   const currentTheme = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+   body.setAttribute('data-theme', currentTheme);
+   localStorage.setItem('theme', currentTheme);
+   updateThemeIcon(currentTheme);
+});
+
+function updateThemeIcon(theme) {
+   themeToggle.innerHTML = `<i class="bi bi-${theme === 'dark' ? 'sun-fill' : 'moon-stars-fill'}"></i> ${theme === 'dark' ? 'Light' : 'Dark'} Mode`;
+}
+
+// Updated Clock Functionality
 function updateClock() {
+   const now = new Date();
 
-   var now = new Date();
-   var hours = now.getHours();
-   var minutes = now.getMinutes();
-   var seconds = now.getSeconds();
-   var amPm = hours >= 12 ? 'PM' : 'AM';
-   hours = hours % 12;
-   hours = hours ? hours : 12;
-   minutes = minutes < 10 ? '0' + minutes : minutes;
-   seconds = seconds < 10 ? '0' + seconds : seconds;
-   let days = ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-   let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December",]
-   let day = `${days[now.getDay()]}, ${months[now.getMonth()]} ${now.getDate()} ${now.getFullYear()}`
-   var time = `${hours}:${minutes}:${seconds} ${amPm}`
+   // Format time with AM/PM
+   const time = now.toLocaleTimeString('en-US', {
+      hour: 'numeric',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true
+   });
 
-   document.getElementById('clockTime').innerHTML = time;
-   document.getElementById('clockDay').innerHTML = day;
-   setTimeout(updateClock, 1000);
+   // Format date with ordinal suffix
+   const day = now.getDate();
+   const suffix = (day) => {
+      if (day > 3 && day < 21) return 'th';
+      switch (day % 10) {
+         case 1: return 'st';
+         case 2: return 'nd';
+         case 3: return 'rd';
+         default: return 'th';
+      }
+   };
+   const date = now.toLocaleDateString('en-US', {
+      weekday: 'long',
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric'
+   }).replace(String(day), `${day}${suffix(day)}`);
+
+   // Update DOM with animation
+   const clockTime = document.getElementById('clockTime');
+   const clockDay = document.getElementById('clockDay');
+   clockTime.textContent = time;
+   clockDay.textContent = date;
+
+   // Add subtle blink animation
+   clockTime.classList.add('clock-blink');
+   setTimeout(() => clockTime.classList.remove('clock-blink'), 200);
+
+   // Schedule next update
+   requestAnimationFrame(updateClock);
 }
 updateClock();
+
+// Placeholder for weather (replace with your actual weather API code)
+document.getElementById('temperature').textContent = '25°C';
+document.getElementById('description').textContent = 'Sunny';
+document.getElementById('location').textContent = 'Varanasi';
+document.getElementById('humidity').textContent = '60%';
+document.getElementById('pressure').textContent = '1012 hPa';
+document.getElementById('windSpeed').textContent = '5 km/h';
 
 
 // weather
