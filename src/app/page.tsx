@@ -11,7 +11,13 @@ export default function Home() {
   const userId = "user-1";
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <div 
+      className="min-h-screen flex flex-col bg-slate-950 text-slate-100 transition-colors duration-300 selection:bg-emerald-500/30 selection:text-emerald-200"
+      style={{
+        backgroundImage: `linear-gradient(to right, #1e293b 1px, transparent 1px), linear-gradient(to bottom, #1e293b 1px, transparent 1px)`,
+        backgroundSize: '40px 40px'
+      }}
+    >
       <Header />
 
       <main className="flex-1 container mx-auto px-4 py-8">

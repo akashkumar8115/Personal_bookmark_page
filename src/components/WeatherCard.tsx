@@ -87,8 +87,8 @@ export function WeatherCard() {
   if (!mounted) {
     return (
       <div className="flex justify-center h-full w-full">
-        <div className="bg-white/30 dark:bg-black/30 backdrop-blur-md border border-white/20 dark:border-white/10 p-6 rounded-xl shadow-lg w-full max-w-md animate-pulse">
-          <div className="h-32 flex items-center justify-center opacity-50">Loading weather...</div>
+        <div className="bg-slate-900/80 backdrop-blur-md border border-emerald-500/20 p-6 rounded-2xl shadow-xl shadow-emerald-900/10 w-full max-w-md animate-pulse">
+          <div className="h-32 flex items-center justify-center opacity-50 text-emerald-500">Loading weather...</div>
         </div>
       </div>
     );
@@ -97,21 +97,21 @@ export function WeatherCard() {
   return (
     <section className="flex justify-center h-full w-full" aria-label="Weather Forecast">
       {/* Replaced 'glass-card' with Tailwind utility classes */}
-      <article className="bg-white/30 dark:bg-black/30 backdrop-blur-md border border-white/20 dark:border-white/10 p-6 rounded-xl shadow-lg w-full max-w-md transition-colors">
+      <article className="bg-slate-900/80 backdrop-blur-md border border-emerald-500/20 p-6 rounded-2xl shadow-xl shadow-emerald-900/10 w-full max-w-md transition-all duration-300 hover:shadow-emerald-500/20 hover:border-emerald-500/40 group">
         <div className="flex justify-between items-center mb-4">
           <div className="flex items-center">
-            <h3 className="text-3xl font-semibold text-gray-900 dark:text-white">
+            <h3 className="text-3xl font-semibold text-slate-100 group-hover:text-emerald-400 transition-colors">
               {loading ? '--' : weather?.temp ?? '--'}
             </h3>
-            <i className="bi bi-thermometer-sun mx-2 text-3xl text-yellow-500 dark:text-yellow-400" />
+            <i className="bi bi-thermometer-sun mx-2 text-3xl text-emerald-500" />
           </div>
 
           <div className="text-right">
-            <div className="font-medium text-gray-800 dark:text-gray-200">
+            <div className="font-medium text-slate-300">
               {loading ? 'Loading...' : weather?.desc ?? 'Unavailable'}
             </div>
             <div
-              className="flex items-center justify-end gap-2 cursor-pointer text-gray-700 dark:text-gray-300 hover:text-blue-500 transition-colors mt-1"
+              className="flex items-center justify-end gap-2 cursor-pointer text-slate-400 hover:text-emerald-400 transition-colors mt-1"
               onClick={handleEditLocation}
             >
               <span className="font-semibold">{location}</span>
@@ -120,18 +120,18 @@ export function WeatherCard() {
           </div>
         </div>
 
-        <div className="flex justify-around items-center mt-4 pt-4 border-t border-gray-300 dark:border-gray-700">
+        <div className="flex justify-around items-center mt-4 pt-4 border-t border-emerald-500/20">
           <div className="text-center">
-            <i className="bi bi-droplet-half text-blue-500 dark:text-blue-400 text-xl block mb-1" />
-            <span className="text-sm text-gray-800 dark:text-gray-200">{loading ? '--' : weather?.humidity ?? '--'}</span>
+            <i className="bi bi-droplet-half text-emerald-500 text-xl block mb-1" />
+            <span className="text-sm text-slate-400">{loading ? '--' : weather?.humidity ?? '--'}</span>
           </div>
           <div className="text-center">
-            <i className="bi bi-thermometer-half text-orange-500 dark:text-orange-400 text-xl block mb-1" />
-            <span className="text-sm text-gray-800 dark:text-gray-200">{loading ? '--' : weather?.pressure ?? '--'}</span>
+            <i className="bi bi-thermometer-half text-emerald-500 text-xl block mb-1" />
+            <span className="text-sm text-slate-400">{loading ? '--' : weather?.pressure ?? '--'}</span>
           </div>
           <div className="text-center">
-            <i className="bi bi-wind text-gray-500 dark:text-gray-400 text-xl block mb-1" />
-            <span className="text-sm text-gray-800 dark:text-gray-200">{loading ? '--' : weather?.wind ?? '--'}</span>
+            <i className="bi bi-wind text-emerald-400 text-xl block mb-1" />
+            <span className="text-sm text-slate-400">{loading ? '--' : weather?.wind ?? '--'}</span>
           </div>
         </div>
       </article>

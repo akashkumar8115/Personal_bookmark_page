@@ -40,15 +40,15 @@ export function Modal({ isOpen, onClose, title, children, footer }: ModalProps) 
         >
             {/* Modal Card: e.stopPropagation() prevents clicks inside the modal from closing it */}
             <div
-                className="bg-white dark:bg-gray-900 rounded-xl shadow-2xl w-full max-w-md mx-4 overflow-hidden border border-gray-200 dark:border-gray-700"
+                className="bg-slate-900 rounded-2xl shadow-2xl shadow-emerald-900/20 w-full max-w-md mx-4 overflow-hidden border border-emerald-500/20"
                 onClick={(e) => e.stopPropagation()}
             >
                 {/* Header */}
-                <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center bg-gray-50 dark:bg-gray-800 transition-colors">
-                    <h5 className="text-lg font-bold text-gray-900 dark:text-white">{title}</h5>
+                <div className="p-4 border-b border-emerald-500/20 flex justify-between items-center bg-slate-900/50">
+                    <h5 className="text-lg font-bold text-slate-100">{title}</h5>
                     <button
                         onClick={onClose}
-                        className="text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white transition-colors"
+                        className="text-slate-400 hover:text-emerald-400 transition-colors"
                         aria-label="Close modal"
                     >
                         <i className="bi bi-x-lg" />
@@ -56,13 +56,13 @@ export function Modal({ isOpen, onClose, title, children, footer }: ModalProps) 
                 </div>
 
                 {/* Body */}
-                <div className="p-6 text-gray-700 dark:text-gray-300">
+                <div className="p-6 text-slate-300">
                     {children}
                 </div>
 
                 {/* Footer (Optional) */}
                 {footer && (
-                    <div className="p-4 border-t border-gray-200 dark:border-gray-700 flex justify-end gap-2 bg-gray-50 dark:bg-gray-800/50 transition-colors">
+                    <div className="p-4 border-t border-emerald-500/20 flex justify-end gap-2 bg-slate-900/50">
                         {footer}
                     </div>
                 )}

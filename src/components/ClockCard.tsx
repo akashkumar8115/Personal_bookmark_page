@@ -58,7 +58,7 @@ export function ClockCard() {
     return (
       <div className="flex justify-center items-center h-full">
         {/* Tailwind Glassmorphism effect */}
-        <div className="bg-white/30 dark:bg-black/30 backdrop-blur-md border border-white/20 dark:border-white/10 p-8 rounded-xl shadow-lg text-center w-full max-w-sm">
+        <div className="bg-slate-900/80 backdrop-blur-md border border-emerald-500/20 p-8 rounded-2xl shadow-xl shadow-emerald-900/10 text-center w-full max-w-sm">
            <h3 className="text-3xl font-semibold mb-2 opacity-50">Loading clock...</h3>
         </div>
       </div>
@@ -68,11 +68,11 @@ export function ClockCard() {
   return (
     <div className="flex justify-center items-center h-full">
       {/* Tailwind Glassmorphism effect replacing custom 'glass-card' */}
-      <div className="bg-white/30 dark:bg-black/30 backdrop-blur-md border border-white/20 dark:border-white/10 p-8 rounded-xl shadow-lg text-center w-full max-w-sm transition-colors">
-        <h3 className={`text-3xl font-semibold mb-2 transition-opacity duration-200 ${blink ? 'opacity-50' : 'opacity-100'}`}>
+      <div className="bg-slate-900/80 backdrop-blur-md border border-emerald-500/20 p-8 rounded-2xl shadow-xl shadow-emerald-900/10 text-center w-full max-w-sm transition-colors">
+        <h3 className={`text-3xl font-semibold mb-2 transition-opacity duration-200 text-slate-100 ${blink ? 'opacity-50' : 'opacity-100'}`}>
           {time}
         </h3>
-        <h5 className="text-lg opacity-80 text-gray-800 dark:text-gray-200">{date}</h5>
+        <h5 className="text-lg opacity-80 text-slate-300">{date}</h5>
       </div>
     </div>
   );

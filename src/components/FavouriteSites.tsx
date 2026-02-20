@@ -79,21 +79,21 @@ export function FavouriteSites({ userId }: { userId: string }) {
   if (isLoading) {
     // Skeleton loader to prevent hydration errors
     return (
-      <div className="bg-white/30 dark:bg-black/30 backdrop-blur-md border border-white/20 dark:border-white/10 p-6 rounded-xl shadow-lg h-full animate-pulse">
-        <div className="h-8 bg-gray-300 dark:bg-gray-700 rounded w-48 mb-6"></div>
-        <div className="h-10 bg-gray-300 dark:bg-gray-700 rounded w-full mb-4"></div>
-        <div className="h-32 bg-gray-300 dark:bg-gray-700 rounded w-full"></div>
+      <div className="bg-slate-900/80 backdrop-blur-md border border-emerald-500/20 p-6 rounded-2xl shadow-xl shadow-emerald-900/10 h-full animate-pulse">
+        <div className="h-8 bg-emerald-900/20 rounded w-48 mb-6"></div>
+        <div className="h-10 bg-emerald-900/10 rounded w-full mb-4"></div>
+        <div className="h-32 bg-emerald-900/10 rounded w-full"></div>
       </div>
     );
   }
 
   return (
-    <section className="bg-white/30 dark:bg-black/30 backdrop-blur-md border border-white/20 dark:border-white/10 p-6 rounded-xl shadow-lg h-full transition-colors" aria-labelledby="fav-sites-title">
+    <section className="bg-slate-900/80 backdrop-blur-md border border-emerald-500/20 p-6 rounded-2xl shadow-xl shadow-emerald-900/10 h-full transition-all duration-300 hover:shadow-emerald-500/20 hover:border-emerald-500/40" aria-labelledby="fav-sites-title">
       <div className="flex items-center justify-between mb-4">
-        <h2 id="fav-sites-title" className="text-2xl font-bold flex items-center gap-3 text-gray-900 dark:text-white">
+        <h2 id="fav-sites-title" className="text-2xl font-bold flex items-center gap-3 text-slate-100">
           Favourite Sites
           <i 
-            className="bi bi-bookmark-plus text-blue-500 cursor-pointer hover:scale-110 transition-transform" 
+            className="bi bi-bookmark-plus text-emerald-500 cursor-pointer hover:scale-110 transition-transform hover:text-emerald-400" 
             onClick={() => setIsModalOpen(true)}
             aria-label="Add new site"
           />
@@ -103,12 +103,12 @@ export function FavouriteSites({ userId }: { userId: string }) {
       {/* Search Input */}
       <div className="flex mb-4 gap-2">
         <div className="flex-1 relative">
-          <span className="absolute left-3 top-2.5 text-gray-500 dark:text-gray-400">
+          <span className="absolute left-3 top-2.5 text-emerald-500/70">
             <i className="bi bi-search" />
           </span>
           <input 
             type="text" 
-            className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+            className="w-full pl-10 pr-4 py-2 rounded-xl border border-emerald-500/20 bg-slate-950/50 text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-colors placeholder-slate-500"
             placeholder="Search favorites..." 
             value={search}
             onChange={(e) => setSearch(e.target.value)}
@@ -116,16 +116,16 @@ export function FavouriteSites({ userId }: { userId: string }) {
         </div>
         <button 
           onClick={() => setSearch('')} 
-          className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm transition-colors"
+          className="px-4 py-2 border border-emerald-500/20 rounded-xl hover:bg-emerald-900/20 text-slate-300 text-sm transition-colors"
         >
           Clear
         </button>
       </div>
 
       {/* Table */}
-      <div className="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
-        <table className="w-full text-left border-collapse bg-white dark:bg-gray-800 transition-colors">
-          <thead className="bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-300">
+      <div className="overflow-x-auto rounded-xl border border-emerald-500/20">
+        <table className="w-full text-left border-collapse text-slate-300">
+          <thead className="bg-emerald-900/20 text-emerald-400">
             <tr>
               <th className="p-3 font-semibold">#</th>
               <th className="p-3 font-semibold">Title</th>
@@ -136,27 +136,27 @@ export function FavouriteSites({ userId }: { userId: string }) {
           <tbody>
             {filteredList.length === 0 ? (
               <tr>
-                <td colSpan={4} className="p-4 text-center text-gray-500 dark:text-gray-400">
+                <td colSpan={4} className="p-4 text-center text-slate-500">
                   No sites found. Add some!
                 </td>
               </tr>
             ) : (
               filteredList.map((item, i) => (
-                <tr key={i} className="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
-                  <td className="p-3 text-gray-600 dark:text-gray-400">{i + 1}</td>
-                  <td className="p-3 font-medium text-gray-900 dark:text-white">{item.title}</td>
+                <tr key={i} className="border-b border-emerald-500/10 hover:bg-emerald-900/10 transition-colors">
+                  <td className="p-3 text-slate-500">{i + 1}</td>
+                  <td className="p-3 font-medium text-slate-100">{item.title}</td>
                   <td className="p-3">
                     <a 
                       href={item.url} 
                       target="_blank" 
                       rel="noopener noreferrer" 
-                      className="text-blue-500 hover:underline truncate block max-w-[150px] md:max-w-xs"
+                      className="text-emerald-400 hover:text-emerald-300 hover:underline truncate block max-w-[150px] md:max-w-xs"
                     >
                       {item.url}
                     </a>
                   </td>
                   <td className="p-3 flex gap-4">
-                    <i className="bi bi-pencil-square text-green-500 cursor-pointer hover:text-green-600 transition-colors" onClick={() => handleEdit(item)} />
+                    <i className="bi bi-pencil-square text-blue-400 cursor-pointer hover:text-blue-300 transition-colors" onClick={() => handleEdit(item)} />
                     <i className="bi bi-trash text-red-500 cursor-pointer hover:text-red-600 transition-colors" onClick={() => handleDelete(item)} />
                   </td>
                 </tr>
@@ -175,33 +175,33 @@ export function FavouriteSites({ userId }: { userId: string }) {
           <>
             <button 
               onClick={() => setIsModalOpen(false)} 
-              className="px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+              className="px-4 py-2 rounded-xl bg-slate-800 text-slate-200 hover:bg-slate-700 transition-colors"
             >
               Cancel
             </button>
             <button 
               onClick={handleAdd} 
-              className="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+              className="px-4 py-2 rounded-xl bg-emerald-600 text-white hover:bg-emerald-500 transition-colors shadow-lg shadow-emerald-900/20"
             >
               Add Item
             </button>
           </>
         }
       >
-        <div className="space-y-4">
+        <div className="space-y-4 text-slate-200">
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Site Title</label>
+            <label className="block text-sm font-medium mb-1 text-emerald-400">Site Title</label>
             <input 
-              className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors" 
+              className="w-full p-2 border border-emerald-500/30 rounded-xl bg-slate-950/50 text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-colors" 
               placeholder="e.g. GitHub" 
               value={newItem.title} 
               onChange={e => setNewItem({...newItem, title: e.target.value})} 
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">URL</label>
+            <label className="block text-sm font-medium mb-1 text-emerald-400">URL</label>
             <input 
-              className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors" 
+              className="w-full p-2 border border-emerald-500/30 rounded-xl bg-slate-950/50 text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-colors" 
               placeholder="e.g. github.com" 
               type="url"
               value={newItem.url} 
