@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+:root {
+  --bg-body: linear-gradient(135deg, #f4f7fa, #e9ecef);
+  --bg-primary: #ffffff;
+  --text-primary: #2f3338;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --card-border: rgba(0, 0, 0, 0.1);
+  --table-header-bg: #343a40;
+  --table-header-text: #ffffff;
+  --footer-bg: #212529;
+  --footer-text: #e9ecef;
+  --link-color: #007bff;
+  --link-hover: #0056b3;
+  --header-bg: linear-gradient(135deg, #007bff, #0056b3);
+  --header-text: #ffffff;
+  --transition: all 0.3s ease;
+}
+
+[data-theme="dark"] {
+  --bg-body: linear-gradient(135deg, #1a1a1a, #2c2c2c);
+  --bg-primary: #2c2c2c;
+  --text-primary: #e9ecef;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --table-header-bg: #1c2526;
+  --table-header-text: #e9ecef;
+  --footer-bg: #0f1419;
+  --footer-text: #adb5bd;
+  --link-color: #4dabf7;
+  --link-hover: #339af0;
+  --header-bg: linear-gradient(135deg, #1c2526, #343a40);
+  --header-text: #e9ecef;
+}
+
+body {
+  background: var(--bg-body);
+  color: var(--text-primary);
+  transition: var(--transition);
+  min-height: 100vh;
+}
+
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--card-border);
+  transition: var(--transition), transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.clock-blink { opacity: 0.7; }
