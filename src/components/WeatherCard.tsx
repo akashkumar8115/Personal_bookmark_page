@@ -95,9 +95,9 @@ export function WeatherCard() {
   }
 
   return (
-    <div className="flex justify-center h-full w-full">
+    <section className="flex justify-center h-full w-full" aria-label="Weather Forecast">
       {/* Replaced 'glass-card' with Tailwind utility classes */}
-      <div className="bg-white/30 dark:bg-black/30 backdrop-blur-md border border-white/20 dark:border-white/10 p-6 rounded-xl shadow-lg w-full max-w-md transition-colors">
+      <article className="bg-white/30 dark:bg-black/30 backdrop-blur-md border border-white/20 dark:border-white/10 p-6 rounded-xl shadow-lg w-full max-w-md transition-colors">
         <div className="flex justify-between items-center mb-4">
           <div className="flex items-center">
             <h3 className="text-3xl font-semibold text-gray-900 dark:text-white">
@@ -134,7 +134,7 @@ export function WeatherCard() {
             <span className="text-sm text-gray-800 dark:text-gray-200">{loading ? '--' : weather?.wind ?? '--'}</span>
           </div>
         </div>
-      </div>
-    </div>
+      </article>
+    </section>
   );
 }

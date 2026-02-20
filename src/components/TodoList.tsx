@@ -82,16 +82,16 @@ export function TodoList({ userId }: { userId: string }) {
     }
 
     return (
-        <div className="bg-white/30 dark:bg-black/30 backdrop-blur-md border border-white/20 dark:border-white/10 p-6 rounded-xl shadow-lg h-full transition-colors">
+        <section className="bg-white/30 dark:bg-black/30 backdrop-blur-md border border-white/20 dark:border-white/10 p-6 rounded-xl shadow-lg h-full transition-colors" aria-labelledby="todo-list-title">
             <div className="flex items-center justify-between mb-4">
-                <h1 className="text-2xl font-bold flex items-center gap-3 text-gray-900 dark:text-white">
+                <h2 id="todo-list-title" className="text-2xl font-bold flex items-center gap-3 text-gray-900 dark:text-white">
                     Todo List
                     <i
                         className="bi bi-clipboard2-plus text-blue-500 cursor-pointer hover:scale-110 transition-transform"
                         onClick={() => setIsModalOpen(true)}
                         aria-label="Add new todo"
                     />
-                </h1>
+                </h2>
             </div>
 
             {/* Search Input */}
@@ -222,6 +222,6 @@ export function TodoList({ userId }: { userId: string }) {
                     </div>
                 </div>
             </Modal>
-        </div>
+        </section>
     );
 }

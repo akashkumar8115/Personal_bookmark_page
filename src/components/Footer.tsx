@@ -30,21 +30,21 @@ export function Footer() {
           {/* Social Links */}
           <div>
             <h5 className="text-lg font-bold mb-3 text-gray-900 dark:text-white">Follow Me</h5>
-            <div className="flex gap-4 text-2xl">
+            <nav className="flex gap-4 text-2xl" aria-label="Social Media Links">
               {/* Added target="_blank" and rel="noopener noreferrer" for security on external links */}
-              <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 transition-colors">
+              <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 transition-colors" aria-label="Facebook">
                 <i className="bi bi-facebook" />
               </a>
-              <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">
+              <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors" aria-label="Twitter">
                 <i className="bi bi-twitter" />
               </a>
-              <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-pink-500 transition-colors">
+              <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-pink-500 transition-colors" aria-label="Instagram">
                 <i className="bi bi-instagram" />
               </a>
-              <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors">
+              <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors" aria-label="LinkedIn">
                 <i className="bi bi-linkedin" />
               </a>
-            </div>
+            </nav>
           </div>
           
         </div>
